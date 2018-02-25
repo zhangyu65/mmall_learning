@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com</groupId>
-  <artifactId>mmall_leaning</artifactId>
+  <artifactId>mmall_learning</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>mmall_leaning Maven Webapp</name>
+  <name>mmall_learning Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
     <properties>
@@ -247,7 +247,7 @@
 
 
   <build>
-    <finalName>mmall_leaning</finalName>
+    <finalName>mmall_learning</finalName>
 
       <plugins>
           <plugin>
