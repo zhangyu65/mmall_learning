@@ -1,6 +1,7 @@
 package com.mmall.controller.portal;
 
 import com.github.pagehelper.PageInfo;
+import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.Shipping;
@@ -25,7 +26,7 @@ public class ShippingController {
     @RequestMapping("add.do")
     @ResponseBody
     public ServerResponse add(HttpSession session, Shipping shipping){
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
@@ -35,7 +36,7 @@ public class ShippingController {
     @RequestMapping("del.do")
     @ResponseBody
     public ServerResponse del(HttpSession session, Integer shippingId){
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
@@ -45,7 +46,7 @@ public class ShippingController {
     @RequestMapping("update.do")
     @ResponseBody
     public ServerResponse update(HttpSession session, Shipping shipping){
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
@@ -55,7 +56,7 @@ public class ShippingController {
     @RequestMapping("select.do")
     @ResponseBody
     public ServerResponse<Shipping> select(HttpSession session, Integer shippingId){
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
@@ -67,7 +68,7 @@ public class ShippingController {
     public ServerResponse<PageInfo> list(@RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
                                                             @RequestParam(value = "pageSize",defaultValue = "10")int pageSize,
                                                             HttpSession session){
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }

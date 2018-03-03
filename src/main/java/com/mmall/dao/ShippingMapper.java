@@ -18,11 +18,11 @@ public interface ShippingMapper {
 
     int updateByPrimaryKey(Shipping record);
 
-    int deleteByUserIdShippingId(@Param("userId") Integer userId, @Param("userId") Integer shippingId);
+    int deleteByUserIdShippingId(@Param("userId") Integer userId, @Param("shippingId") Integer shippingId);
 
     int updateByShipping(Shipping record);
 
-    Shipping selectByUserIdShippingId(@Param("userId")Integer userId, @Param("ShippingId")Integer ShippingId);
+    Shipping selectByUserIdShippingId(@Param("userId")Integer userId, @Param("shippingId")Integer shippingId);
 
     List<Shipping> selectByUserId(Integer UserId);
 }
