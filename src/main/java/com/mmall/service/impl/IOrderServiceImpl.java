@@ -144,7 +144,7 @@ public class IOrderServiceImpl implements IOrderService {
         orderItemVo.setQuantity(orderItem.getQuantity());
         orderItemVo.setTotalPrice(orderItem.getTotalPrice());
 
-        orderItemVo.setCreateTime(orderItem.getCreateTime().toString());
+        orderItemVo.setCreateTime(DateTimeUtil.dateToStr(orderItem.getCreateTime()));
         return orderItemVo;
     }
 
@@ -216,6 +216,9 @@ public class IOrderServiceImpl implements IOrderService {
             Product product = productMapper.selectByPrimaryKey(cartItem.getProductId());
             if (Const.ProductStatusEnum.ON_SALE.getCode() != product.getStatus()){
                 return ServerResponse.createByErrorMessage("产品"+product.getName()+"不是在线状态");
+            }
+            if (cartItem.getQuantity()>product.getStock()){
+                return ServerResponse.createByErrorMessage("产品"+product.getName()+"库存不足");
             }
             orderItem.setUserId(userId);
             orderItem.setProductId(product.getId());
