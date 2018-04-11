@@ -15,6 +15,10 @@ public class Const {
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
     }
 
+    public interface RedisCacheExtime{
+        int REDIS_SESSION_EXTIME = 60*30;
+    }
+
     public interface  Cart{
         int CHECKED = 1;
         int UN_CHECKED = 0;
