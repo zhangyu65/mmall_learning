@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class CookieUtil {
 
-    private final static String COOKIE_DOMAIN = ".zymall.shop";
-    private final static String COOKIE_NAME = "mmal_login_taken";
+    private final static String COOKIE_DOMAIN = "zymall.shop";
+    private final static String COOKIE_NAME = "mall_login_taken";
 
     public static String readLoginToken(HttpServletRequest request){
         Cookie[] cks = request.getCookies();
