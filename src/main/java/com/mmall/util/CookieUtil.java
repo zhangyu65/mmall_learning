@@ -3,7 +3,6 @@ package com.mmall.util;
 import com.mmall.common.Const;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +32,7 @@ public class CookieUtil {
         Cookie ck = new Cookie(COOKIE_NAME,token);
         ck.setDomain(COOKIE_DOMAIN);
         ck.setPath("/");
+        ck.setHttpOnly(true);
         ck.setMaxAge(Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         log.info("write cookieName:{},cookieValue:{}",ck.getName(),ck.getValue());
         response.addCookie(ck);
@@ -47,6 +47,7 @@ public class CookieUtil {
                     ck.setPath("/");
                     ck.setMaxAge(0);
                     log.info("del cookoeName:{},cookieValue:{}",ck.getName(),ck.getValue());
+                    response.addCookie(ck);
                 }
             }
         }
