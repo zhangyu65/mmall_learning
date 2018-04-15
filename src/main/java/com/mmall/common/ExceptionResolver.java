@@ -16,7 +16,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) {
         log.error("{} Exception", request.getRequestURI(), e);
-        ModelAndView modelAndView = new ModelAndView(new MappingJacksonJsonView);
+        ModelAndView modelAndView = new ModelAndView(new MappingJacksonJsonView());
         modelAndView.addObject("status",ResponseCode.ERROR.getCode());
         modelAndView.addObject("msg","接口异常，详情请查看服务端日志");
         modelAndView.addObject("data",e.toString());
