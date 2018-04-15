@@ -31,73 +31,25 @@ public class OrderManageController {
     @RequestMapping("list.do")
     @ResponseBody
     public ServerResponse<PageInfo> orderList(HttpServletRequest request, @RequestParam(value = "pageNum", defaultValue = "1")int pageNum, @RequestParam(value = "pageSize", defaultValue = "10")int pageSize) {
-        String  loginToken = CookieUtil.readLoginToken(request);
-        if (StringUtils.isEmpty(loginToken)){
-            return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户信息");
-        }
-        User user = JsonUtil.string2Obj(RedisShardedPoolUtil.get(loginToken),User.class);
-        if (user == null) {
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
-        if (iUserService.checkAdmin(user).isSuccess()) {
-            return iOrderService.manageList(pageNum, pageSize);
-        } else {
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        return iOrderService.manageList(pageNum, pageSize);
     }
 
     @RequestMapping("detail.do")
     @ResponseBody
     public ServerResponse<OrderVo> orderDetail(HttpServletRequest request, Long orderNo) {
-        String  loginToken = CookieUtil.readLoginToken(request);
-        if (StringUtils.isEmpty(loginToken)){
-            return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户信息");
-        }
-        User user = JsonUtil.string2Obj(RedisShardedPoolUtil.get(loginToken),User.class);
-        if (user == null) {
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
-        if (iUserService.checkAdmin(user).isSuccess()) {
-            return iOrderService.manageDetail(orderNo);
-        } else {
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        return iOrderService.manageDetail(orderNo);
     }
 
     @RequestMapping("seach.do")
     @ResponseBody
     public ServerResponse<PageInfo> orderSeach(HttpServletRequest request, Long orderNo, @RequestParam(value = "pageNum", defaultValue = "1")int pageNum, @RequestParam(value = "pageSize", defaultValue = "10")int pageSize) {
-        String  loginToken = CookieUtil.readLoginToken(request);
-        if (StringUtils.isEmpty(loginToken)){
-            return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户信息");
-        }
-        User user = JsonUtil.string2Obj(RedisShardedPoolUtil.get(loginToken),User.class);
-        if (user == null) {
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
-        if (iUserService.checkAdmin(user).isSuccess()) {
-            return iOrderService.manageSeach(orderNo, pageNum, pageSize);
-        } else {
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        return iOrderService.manageSeach(orderNo, pageNum, pageSize);
     }
 
     @RequestMapping("send_goods.do")
     @ResponseBody
     public ServerResponse<String> orderSendGoods(HttpServletRequest request, Long orderNo) {
-        String  loginToken = CookieUtil.readLoginToken(request);
-        if (StringUtils.isEmpty(loginToken)){
-            return ServerResponse.createByErrorMessage("用户未登录，无法获取当前用户信息");
-        }
-        User user = JsonUtil.string2Obj(RedisShardedPoolUtil.get(loginToken),User.class);
-        if (user == null) {
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), ResponseCode.ILLEGAL_ARGUMENT.getDesc());
-        }
-        if (iUserService.checkAdmin(user).isSuccess()) {
-            return iOrderService.manageSendGoods(orderNo);
-        } else {
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        return iOrderService.manageSendGoods(orderNo);
     }
 
 
