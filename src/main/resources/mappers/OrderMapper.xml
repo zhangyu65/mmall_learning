@@ -198,6 +198,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <select id="selectByUserIdAndOrderNo" resultMap="BaseResultMap" parameterType="map">
     SELECT
       <include refid="Base_Column_List"/>
@@ -224,4 +225,18 @@
     from mmall_order
     order by create_time desc
   </select>
+  <select id="selectOrderStatusByCreateTime" resultMap="BaseResultMap" parameterMap="map">
+    SELECT
+      <include refid="Base_Column_List"/>
+    from mmall_order
+    WHERE status = #{status}
+    and create_time <![CDATA[<= ]]> #{date}
+    order by create_time desc
+  </select>
+
+  <update id="closeOrderByOrderId" parameterType="int">
+    UPDATE  mmall_order
+    SET status = 0
+    WHERE id = #{id}
+  </update>
 </mapper>
