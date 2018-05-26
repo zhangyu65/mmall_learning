@@ -38,4 +38,9 @@ public class TokenCache {
         }
         return value;
     }
+
+    public static void main(String[] args) {
+        TokenCache.setKey("a", "aaa");
+        TokenCache.getKey("a");
+    }
 }
