@@ -17,7 +17,7 @@ public class CartProductVo {
     private Integer productStatus;
     private BigDecimal productTotalPrice;
     private Integer productStock;
-    private Integer prodictChecked;
+    private Integer productChecked;
 
     private String limitQuantity;
 
@@ -110,11 +110,11 @@ public class CartProductVo {
     }
 
     public Integer getProdictChecked() {
-        return prodictChecked;
+        return productChecked;
     }
 
     public void setProdictChecked(Integer prodictChecked) {
-        this.prodictChecked = prodictChecked;
+        this.productChecked = prodictChecked;
     }
 
     public String getLimitQuantity() {
