@@ -109,12 +109,12 @@ public class CartProductVo {
         this.productStock = productStock;
     }
 
-    public Integer getProdictChecked() {
+    public Integer getProductChecked() {
         return productChecked;
     }
 
-    public void setProdictChecked(Integer prodictChecked) {
-        this.productChecked = prodictChecked;
+    public void setProductChecked(Integer productChecked) {
+        this.productChecked = productChecked;
     }
 
     public String getLimitQuantity() {
