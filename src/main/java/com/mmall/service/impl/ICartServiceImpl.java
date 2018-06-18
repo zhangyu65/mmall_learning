@@ -131,7 +131,7 @@ public class ICartServiceImpl implements ICartService {
                     }
                     cartProductVo.setQuantity(buyLimitCount);
                     cartProductVo.setProductTotalPrice(BigDecimalUtil.mul(product.getPrice().doubleValue(), cartProductVo.getQuantity().doubleValue()));
-                    cartProductVo.setProdictChecked(cartItem.getChecked());
+                    cartProductVo.setProductChecked(cartItem.getChecked());
                 }
 
                 if (cartItem.getChecked() == Const.Cart.CHECKED) {
