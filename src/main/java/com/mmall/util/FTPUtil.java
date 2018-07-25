@@ -31,7 +31,7 @@ public class FTPUtil {
         FTPUtil ftpUtil = new FTPUtil(ftpIp, 21, ftpUser, ftpPass);
         logger.info("开始连接ftp服务器");
         boolean result = ftpUtil.uploadFile("img", fileList);
-        logger.info("开始连接ftp服务器");
+        logger.info("结束上传，上传结果：{}", result);
         return result;
     }
 
@@ -41,12 +41,14 @@ public class FTPUtil {
         if (connectServer(this.getIp(), this.getPort(), this.getUser(), this.getPwd())){
             try {
                 ftpClient.changeWorkingDirectory(remotePath);
+                logger.info("FTP服务器路径为：{}", remotePath);
                 ftpClient.setBufferSize(1024);
                 ftpClient.setControlEncoding("UTF-8");
                 ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
                 ftpClient.enterLocalPassiveMode();
                 for (File fileItem : fileList){
                     fis = new FileInputStream(fileItem);
+                    logger.info("图片名称为：{}", fileItem.getName());
                     ftpClient.storeFile(fileItem.getName(), fis);
                 }
             } catch (IOException e) {
@@ -118,6 +120,5 @@ public class FTPUtil {
     public void setFtpClient(FTPClient ftpClient) {
         this.ftpClient = ftpClient;
     }
-
 
 }
